@@ -17,7 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import ScrollProgress from "../ui/ScrollProgress";
+import ScrollProgress from "../../ui/ScrollProgress";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

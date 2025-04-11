@@ -47,7 +47,7 @@ import {
   generatePersonalizedHint,
   analyzeSolution,
 } from "./components/lib/gemini";
-import Header from "@/app/components/layout/Header";
+import Header from "@/app/components/layout/student/Header";
 import NoiseBackground from "@/app/components/effects/NoiseBackground";
 import { TypingAnimation } from "./components/ui/TypingAnimation";
 import { cn } from "@/lib/utils";
@@ -205,7 +205,7 @@ export default function CodingTestPage() {
   const [activeTestTab, setActiveTestTab] = useState("results");
   const [difficulty, setDifficulty] = useState(
     DIFFICULTY_LEVELS.find((level) => level.id === levelParam) ||
-      DIFFICULTY_LEVELS[1]
+    DIFFICULTY_LEVELS[1]
   );
   const [hasCompletedChallenge, setHasCompletedChallenge] = useState(false);
   const [revealedHints, setRevealedHints] = useState<number[]>([]);
@@ -484,13 +484,13 @@ export default function CodingTestPage() {
 
           setFeedback(
             results.feedback ||
-              "Great job! You've successfully completed this challenge."
+            "Great job! You've successfully completed this challenge."
           );
         } else {
           setSolutionStatus("failed");
           setFeedback(
             results.feedback ||
-              "Some test cases failed. Try again after reviewing your code."
+            "Some test cases failed. Try again after reviewing your code."
           );
 
           showNotification(
@@ -739,31 +739,28 @@ export default function CodingTestPage() {
                       <div className="flex space-x-1">
                         <button
                           onClick={() => setActiveTab("description")}
-                          className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                            activeTab === "description"
+                          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeTab === "description"
                               ? "bg-indigo-500/20 text-indigo-300"
                               : "text-gray-400 hover:text-gray-300 hover:bg-gray-700/30"
-                          } transition-colors`}
+                            } transition-colors`}
                         >
                           Description
                         </button>
                         <button
                           onClick={() => setActiveTab("hints")}
-                          className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                            activeTab === "hints"
+                          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeTab === "hints"
                               ? "bg-indigo-500/20 text-indigo-300"
                               : "text-gray-400 hover:text-gray-300 hover:bg-gray-700/30"
-                          } transition-colors`}
+                            } transition-colors`}
                         >
                           Hints
                         </button>
                         <button
                           onClick={() => setActiveTab("discussion")}
-                          className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                            activeTab === "discussion"
+                          className={`px-4 py-2 rounded-lg text-sm font-medium ${activeTab === "discussion"
                               ? "bg-indigo-500/20 text-indigo-300"
                               : "text-gray-400 hover:text-gray-300 hover:bg-gray-700/30"
-                          } transition-colors`}
+                            } transition-colors`}
                         >
                           Discussion
                         </button>
@@ -879,30 +876,27 @@ export default function CodingTestPage() {
                         {problem?.hints?.map((hint: string, i: number) => (
                           <div key={i} className="mb-4">
                             <button
-                              className={`w-full text-left px-4 py-3 ${
-                                revealedHints.includes(i)
+                              className={`w-full text-left px-4 py-3 ${revealedHints.includes(i)
                                   ? "bg-indigo-500/10 border-indigo-500/30"
                                   : "bg-gray-800/50 hover:bg-gray-800/80 border-gray-700/50"
-                              } rounded-lg border transition-colors`}
+                                } rounded-lg border transition-colors`}
                               onClick={() => revealHint(i)}
                             >
                               <div className="flex items-center justify-between">
                                 <div className="flex items-center">
                                   <div
-                                    className={`w-8 h-8 rounded-full ${
-                                      revealedHints.includes(i)
+                                    className={`w-8 h-8 rounded-full ${revealedHints.includes(i)
                                         ? "bg-indigo-500/20 text-indigo-300"
                                         : "bg-gray-700/70 text-gray-400"
-                                    } flex items-center justify-center font-medium mr-3`}
+                                      } flex items-center justify-center font-medium mr-3`}
                                   >
                                     {i + 1}
                                   </div>
                                   <span
-                                    className={`${
-                                      revealedHints.includes(i)
+                                    className={`${revealedHints.includes(i)
                                         ? "text-indigo-300"
                                         : "text-gray-300"
-                                    } font-medium`}
+                                      } font-medium`}
                                   >
                                     {revealedHints.includes(i)
                                       ? "Hint"
@@ -1113,11 +1107,10 @@ export default function CodingTestPage() {
                       <button
                         key={lang.id}
                         onClick={() => handleLanguageChange(lang.id)}
-                        className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                          language.id === lang.id
+                        className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${language.id === lang.id
                             ? "bg-indigo-500/20 text-indigo-300"
                             : "text-gray-400 hover:text-gray-300 hover:bg-gray-700/50"
-                        }`}
+                          }`}
                       >
                         {lang.name}
                       </button>
@@ -1158,21 +1151,19 @@ export default function CodingTestPage() {
                     <div className="flex space-x-2">
                       <button
                         onClick={() => setActiveTestTab("results")}
-                        className={`px-3 py-1 text-sm font-medium rounded-md ${
-                          activeTestTab === "results"
+                        className={`px-3 py-1 text-sm font-medium rounded-md ${activeTestTab === "results"
                             ? "bg-gray-700/80 text-white"
                             : "text-gray-400 hover:text-gray-300"
-                        }`}
+                          }`}
                       >
                         Test Results
                       </button>
                       <button
                         onClick={() => setActiveTestTab("output")}
-                        className={`px-3 py-1 text-sm font-medium rounded-md ${
-                          activeTestTab === "output"
+                        className={`px-3 py-1 text-sm font-medium rounded-md ${activeTestTab === "output"
                             ? "bg-gray-700/80 text-white"
                             : "text-gray-400 hover:text-gray-300"
-                        }`}
+                          }`}
                       >
                         Console Output
                       </button>
@@ -1225,11 +1216,10 @@ export default function CodingTestPage() {
                             {testResults.map((result: any, index: number) => (
                               <div
                                 key={index}
-                                className={`p-3 rounded-md ${
-                                  result.passed
+                                className={`p-3 rounded-md ${result.passed
                                     ? "bg-green-500/10 border border-green-500/30"
                                     : "bg-red-500/10 border border-red-500/30"
-                                }`}
+                                  }`}
                               >
                                 <div className="flex items-center mb-2">
                                   {result.passed ? (
@@ -1238,11 +1228,10 @@ export default function CodingTestPage() {
                                     <XCircle className="h-5 w-5 text-red-500 mr-2" />
                                   )}
                                   <span
-                                    className={`font-medium ${
-                                      result.passed
+                                    className={`font-medium ${result.passed
                                         ? "text-green-400"
                                         : "text-red-400"
-                                    }`}
+                                      }`}
                                   >
                                     Test Case {index + 1}{" "}
                                     {result.passed ? "Passed" : "Failed"}
@@ -1273,11 +1262,10 @@ export default function CodingTestPage() {
                                       Your Output:
                                     </div>
                                     <div
-                                      className={`${
-                                        result.passed
+                                      className={`${result.passed
                                           ? "text-green-300"
                                           : "text-red-300"
-                                      } bg-gray-800/50 p-2 rounded overflow-x-auto`}
+                                        } bg-gray-800/50 p-2 rounded overflow-x-auto`}
                                     >
                                       {result.actual}
                                     </div>
@@ -1332,13 +1320,12 @@ export default function CodingTestPage() {
             >
               <div className="flex items-start">
                 <div
-                  className={`mr-3 mt-1 p-2 rounded-full ${
-                    solutionStatus === "passed"
+                  className={`mr-3 mt-1 p-2 rounded-full ${solutionStatus === "passed"
                       ? "bg-green-500/20"
                       : solutionStatus === "failed"
-                      ? "bg-amber-500/20"
-                      : "bg-indigo-500/20"
-                  }`}
+                        ? "bg-amber-500/20"
+                        : "bg-indigo-500/20"
+                    }`}
                 >
                   {solutionStatus === "passed" ? (
                     <Trophy className="h-5 w-5 text-green-400" />
@@ -1352,19 +1339,18 @@ export default function CodingTestPage() {
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
                     <h3
-                      className={`text-lg font-medium ${
-                        solutionStatus === "passed"
+                      className={`text-lg font-medium ${solutionStatus === "passed"
                           ? "text-green-400"
                           : solutionStatus === "failed"
-                          ? "text-amber-400"
-                          : "text-indigo-400"
-                      }`}
+                            ? "text-amber-400"
+                            : "text-indigo-400"
+                        }`}
                     >
                       {solutionStatus === "passed"
                         ? "Challenge Completed!"
                         : solutionStatus === "failed"
-                        ? "Almost There"
-                        : "Hint"}
+                          ? "Almost There"
+                          : "Hint"}
                     </h3>
                     <button
                       onClick={() => setFeedback(null)}

@@ -1,7 +1,9 @@
 "use client";
 
 import { ReactNode, useEffect, useState } from "react";
-import Header from "./Header";
+import { usePathname } from "next/navigation";
+import StudentHeader from "./student/Header";
+import InvestorHeader from "./investor/Header";
 import Footer from "./Footer";
 import ScrollProgress from "../ui/ScrollProgress";
 import Cursor from "../effects/Cursor";
@@ -16,9 +18,13 @@ export default function Layout({
   children,
   userLogin = "vkhare2909",
 }: LayoutProps) {
+  const pathname = usePathname();
+  const isInvestorRoute = pathname?.includes('/investor') ||
+    pathname?.includes('/sign-in/investor') ||
+    pathname?.includes('/sign-up/investor');
   useEffect(() => {
     // Update the date time every minute
-    const timer = setInterval(() => {}, 60000);
+    const timer = setInterval(() => { }, 60000);
 
     return () => clearInterval(timer);
   }, []);
@@ -27,7 +33,7 @@ export default function Layout({
     <>
       <ScrollProgress />
 
-      <Header />
+      {isInvestorRoute ? <InvestorHeader /> : <StudentHeader />}
       <Cursor />
 
       <main className="min-h-screen pt-20">{children}</main>

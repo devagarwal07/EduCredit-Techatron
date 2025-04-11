@@ -17,7 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import ScrollProgress from "../ui/ScrollProgress";
+import ScrollProgress from "../../ui/ScrollProgress";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,32 +55,32 @@ export default function Header() {
 
   const navigation = [
     { name: "Home", href: "/" },
-    {
-      name: "For Students",
-      href: "#",
-      children: [
-        {
-          title: "Career Guidance",
-          href: "/career-guidance",
-          description: "Get personalized career advice and recommendations",
-          icon: <LineChart className="h-5 w-5 text-indigo-400" />,
-        },
-        {
-          title: "Skill Assessment",
-          href: "/skill-assessment",
-          description: "Verify and showcase your skills to investors",
-          icon: <Zap className="h-5 w-5 text-purple-400" />,
-        },
-        {
-          title: "Funding Options",
-          href: "/funding",
-          description: "Connect with investors and funding opportunities",
-          icon: <Rocket className="h-5 w-5 text-pink-400" />,
-        },
-      ],
-    },
-    { name: "Resume Builder", href: "/resume-builder" },
-    { name: "Marketplace", href: "/marketplace" },
+    // {
+    //   name: "For Students",
+    //   href: "#",
+    //   children: [
+    //     {
+    //       title: "Career Guidance",
+    //       href: "/career-guidance",
+    //       description: "Get personalized career advice and recommendations",
+    //       icon: <LineChart className="h-5 w-5 text-indigo-400" />,
+    //     },
+    //     {
+    //       title: "Skill Assessment",
+    //       href: "/skill-assessment",
+    //       description: "Verify and showcase your skills to investors",
+    //       icon: <Zap className="h-5 w-5 text-purple-400" />,
+    //     },
+    //     {
+    //       title: "Funding Options",
+    //       href: "/funding",
+    //       description: "Connect with investors and funding opportunities",
+    //       icon: <Rocket className="h-5 w-5 text-pink-400" />,
+    //     },
+    //   ],
+    // },
+    // { name: "Resume Builder", href: "/resume-builder" },
+    { name: "Student Proposal", href: "/marketplace" },
     {
       name: "Community",
       href: "/community",
@@ -217,13 +217,13 @@ export default function Header() {
                         onClick={() => toggleDropdown(item.name)}
                         onMouseEnter={() => setActiveDropdown(item.name)}
                         className={`text-sm font-medium flex items-center gap-1 relative transition-colors duration-300 ${activeDropdown === item.name
-                          ? "text-indigo-400"
-                          : "text-gray-300 hover:text-white"
+                            ? 'text-indigo-400'
+                            : 'text-gray-300 hover:text-white'
                           }`}
                       >
                         {item.name}
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180" : ""
+                          className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === item.name ? 'rotate-180' : ''
                             }`}
                         />
                       </button>
@@ -239,13 +239,13 @@ export default function Header() {
                             onMouseLeave={() => setActiveDropdown(null)}
                             style={{
                               boxShadow:
-                                "0 15px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+                                '0 15px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
                             }}
                           >
                             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5 z-0"></div>
                             <div className="relative z-10">
                               <div className="px-1 py-1">
-                                {item.children.map((child) => (
+                                {item.children?.map((child) => (
                                   <motion.div
                                     key={child.title}
                                     variants={dropdownItemVariants}
@@ -294,13 +294,14 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className={`text-sm font-medium relative transition-colors duration-300 ${pathname === item.href
-                        ? "text-indigo-400"
-                        : "text-gray-300 hover:text-white"
+                      className={`text-sm font-medium relative transition-colors duration-300 ${activeDropdown === item.name
+                          ? 'text-indigo-400'
+                          : 'text-gray-300 hover:text-white'
                         }`}
                     >
                       {item.name}
-                      {pathname === item.href && (
+                      {/* Optional underline animation (example) */}
+                      {activeDropdown === item.name && (
                         <motion.span
                           layoutId="underline"
                           className="absolute left-0 right-0 bottom-[-5px] h-[2px] bg-indigo-400"

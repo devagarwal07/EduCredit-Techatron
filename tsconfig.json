@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,7 +23,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     }
   },
   "include": [
@@ -30,9 +36,11 @@
     "copy-textures.js",
     "app/marketplace/[id]/page.tsx",
     "lib/mongoose.js",
-    "app/components/layout/Header.tsx",
+    "app/components/layout/student/Header.tsx",
     "app/onboarding/investor/page.jsx",
     "app/api/onboarding/route.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

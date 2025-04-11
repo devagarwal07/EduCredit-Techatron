@@ -590,12 +590,12 @@ export default function StudentDashboard() {
                 </div>
 
                 <div className="space-y-4">
-                  {student.skills
+                  {(student?.skills || [])
                     .sort((a: any, b: any) => b.level - a.level)
                     .slice(0, 5)
                     .map((skill: any, index: number) => (
                       <div
-                        key={skill.id}
+                        key={`${skill.id}-${index}`}
                         className="bg-slate-800 rounded-lg p-4 border border-slate-700/50"
                       >
                         <div className="flex justify-between items-center mb-2">
@@ -787,13 +787,12 @@ export default function StudentDashboard() {
                             .map((skill: string, i: number) => (
                               <span
                                 key={`${course.id}-${skill}`}
-                                className={`inline-flex items-center text-xs px-2.5 py-1 rounded-lg ${
-                                  i === 0
-                                    ? "bg-blue-900/30 text-blue-400 border border-blue-500/20"
-                                    : i === 1
+                                className={`inline-flex items-center text-xs px-2.5 py-1 rounded-lg ${i === 0
+                                  ? "bg-blue-900/30 text-blue-400 border border-blue-500/20"
+                                  : i === 1
                                     ? "bg-indigo-900/30 text-indigo-400 border border-indigo-500/20"
                                     : "bg-purple-900/30 text-purple-400 border border-purple-500/20"
-                                }`}
+                                  }`}
                               >
                                 {skill}
                               </span>
@@ -886,8 +885,6 @@ export default function StudentDashboard() {
                   </Button>
                 </div>
               </div>
-              // Update the line 993 that's causing the error with proper null
-              checking:
               {/* Learning Path Section */}
               <div className="p-6 space-y-4">
                 {student?.learningPath ? (
@@ -895,29 +892,27 @@ export default function StudentDashboard() {
                   student.learningPath.map((item: any, index: number) => (
                     <div
                       key={index}
-                      className={`group bg-slate-800 rounded-xl p-5 border border-slate-700/70 shadow-md transform hover:translate-y-[-2px] transition-all duration-200 cursor-pointer ${
-                        item.completed
-                          ? "hover:border-emerald-500/30"
-                          : index ===
-                            student.learningPath.findIndex(
-                              (i: any) => !i.completed
-                            )
+                      className={`group bg-slate-800 rounded-xl p-5 border border-slate-700/70 shadow-md transform hover:translate-y-[-2px] transition-all duration-200 cursor-pointer ${item.completed
+                        ? "hover:border-emerald-500/30"
+                        : index ===
+                          student.learningPath.findIndex(
+                            (i: any) => !i.completed
+                          )
                           ? "hover:border-blue-500/30"
                           : "hover:border-slate-600/50"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3 mb-3">
                         <div
-                          className={`p-2.5 rounded-lg ${
-                            item.completed
-                              ? "bg-emerald-900/30 text-emerald-400 border border-emerald-500/20"
-                              : index ===
-                                student.learningPath.findIndex(
-                                  (i: any) => !i.completed
-                                )
+                          className={`p-2.5 rounded-lg ${item.completed
+                            ? "bg-emerald-900/30 text-emerald-400 border border-emerald-500/20"
+                            : index ===
+                              student.learningPath.findIndex(
+                                (i: any) => !i.completed
+                              )
                               ? "bg-blue-900/30 text-blue-400 border border-blue-500/20"
                               : "bg-slate-700/30 text-slate-400 border border-slate-600/20"
-                          }`}
+                            }`}
                         >
                           {item.completed ? (
                             <CheckCircle className="h-5 w-5" />
@@ -926,31 +921,29 @@ export default function StudentDashboard() {
                           )}
                         </div>
                         <h3
-                          className={`font-semibold ${
-                            item.completed
-                              ? "text-emerald-300"
-                              : index ===
-                                student.learningPath.findIndex(
-                                  (i: any) => !i.completed
-                                )
+                          className={`font-semibold ${item.completed
+                            ? "text-emerald-300"
+                            : index ===
+                              student.learningPath.findIndex(
+                                (i: any) => !i.completed
+                              )
                               ? "text-white"
                               : "text-slate-500"
-                          }`}
+                            }`}
                         >
                           {item.title}
                         </h3>
                       </div>
                       <p
-                        className={`text-sm ml-11 ${
-                          item.completed
-                            ? "text-slate-400"
-                            : index ===
-                              student.learningPath.findIndex(
-                                (i: any) => !i.completed
-                              )
+                        className={`text-sm ml-11 ${item.completed
+                          ? "text-slate-400"
+                          : index ===
+                            student.learningPath.findIndex(
+                              (i: any) => !i.completed
+                            )
                             ? "text-slate-400"
                             : "text-slate-500"
-                        }`}
+                          }`}
                       >
                         {item.description}
                       </p>

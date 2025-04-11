@@ -41,28 +41,28 @@ export default function InvestorOnboardingPage() {
       return savedData
         ? JSON.parse(savedData)
         : {
-            personalDetails: {
-              name: "",
-              location: "",
-              bio: "",
-            },
-            professional: {
-              company: "",
-              position: "",
-              experience: "",
-              industry: "",
-            },
-            investment: {
-              focusAreas: [],
-              checkSize: "",
-              investmentStage: "",
-            },
-            portfolio: {
-              currentInvestments: "",
-              preferredVerticals: [],
-              annualBudget: "",
-            },
-          };
+          personalDetails: {
+            name: "",
+            location: "",
+            bio: "",
+          },
+          professional: {
+            company: "",
+            position: "",
+            experience: "",
+            industry: "",
+          },
+          investment: {
+            focusAreas: [],
+            checkSize: "",
+            investmentStage: "",
+          },
+          portfolio: {
+            currentInvestments: "",
+            preferredVerticals: [],
+            annualBudget: "",
+          },
+        };
     }
     return {
       personalDetails: {
@@ -325,7 +325,7 @@ export default function InvestorOnboardingPage() {
             </div>
             <Button
               variant="ghost"
-              onClick={() => router.push("/investors")}
+              onClick={() => router.push("/investors/dashboard")}
               className="text-slate-300 hover:text-white hover:bg-slate-800"
             >
               Skip for now
@@ -351,11 +351,10 @@ export default function InvestorOnboardingPage() {
                 {steps.map((step, index) => (
                   <div key={step} className="flex flex-col items-center">
                     <div
-                      className={`h-8 w-8 rounded-full flex items-center justify-center ${
-                        currentStep >= index
-                          ? "bg-blue-500 text-white"
-                          : "bg-slate-800 text-slate-400 border border-slate-700"
-                      }`}
+                      className={`h-8 w-8 rounded-full flex items-center justify-center ${currentStep >= index
+                        ? "bg-blue-500 text-white"
+                        : "bg-slate-800 text-slate-400 border border-slate-700"
+                        }`}
                     >
                       {currentStep > index ? (
                         <CheckCircle2 className="h-4 w-4" />
@@ -364,11 +363,10 @@ export default function InvestorOnboardingPage() {
                       )}
                     </div>
                     <span
-                      className={`text-xs mt-1 ${
-                        currentStep >= index
-                          ? "text-blue-400"
-                          : "text-slate-500"
-                      }`}
+                      className={`text-xs mt-1 ${currentStep >= index
+                        ? "text-blue-400"
+                        : "text-slate-500"
+                        }`}
                     >
                       {step}
                     </span>
@@ -425,11 +423,10 @@ export default function InvestorOnboardingPage() {
                               )
                             }
                             placeholder="Your full name"
-                            className={`w-full rounded-md bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors ${
-                              errors["personalDetails.name"]
-                                ? "border-red-500"
-                                : ""
-                            }`}
+                            className={`w-full rounded-md bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors ${errors["personalDetails.name"]
+                              ? "border-red-500"
+                              : ""
+                              }`}
                           />
                           {errors["personalDetails.name"] && (
                             <p className="mt-1 text-sm text-red-400">
@@ -452,11 +449,10 @@ export default function InvestorOnboardingPage() {
                               )
                             }
                             placeholder="City, Country"
-                            className={`w-full rounded-md bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors ${
-                              errors["personalDetails.location"]
-                                ? "border-red-500"
-                                : ""
-                            }`}
+                            className={`w-full rounded-md bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors ${errors["personalDetails.location"]
+                              ? "border-red-500"
+                              : ""
+                              }`}
                           />
                           {errors["personalDetails.location"] && (
                             <p className="mt-1 text-sm text-red-400">
@@ -479,11 +475,10 @@ export default function InvestorOnboardingPage() {
                               )
                             }
                             placeholder="Tell us about yourself"
-                            className={`w-full rounded-md bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors ${
-                              errors["personalDetails.bio"]
-                                ? "border-red-500"
-                                : ""
-                            }`}
+                            className={`w-full rounded-md bg-slate-800/50 border border-slate-700 text-white placeholder:text-slate-500 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors ${errors["personalDetails.bio"]
+                              ? "border-red-500"
+                              : ""
+                              }`}
                             rows={3}
                           />
                           {errors["personalDetails.bio"] && (
@@ -518,11 +513,10 @@ export default function InvestorOnboardingPage() {
                               )
                             }
                             placeholder="Your current company"
-                            className={`bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${
-                              errors["professional.company"]
-                                ? "border-red-500"
-                                : ""
-                            }`}
+                            className={`bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${errors["professional.company"]
+                              ? "border-red-500"
+                              : ""
+                              }`}
                           />
                           {errors["professional.company"] && (
                             <p className="mt-1 text-sm text-red-400">
@@ -545,11 +539,10 @@ export default function InvestorOnboardingPage() {
                               )
                             }
                             placeholder="Your current position"
-                            className={`bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${
-                              errors["professional.position"]
-                                ? "border-red-500"
-                                : ""
-                            }`}
+                            className={`bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${errors["professional.position"]
+                              ? "border-red-500"
+                              : ""
+                              }`}
                           />
                           {errors["professional.position"] && (
                             <p className="mt-1 text-sm text-red-400">
@@ -617,9 +610,9 @@ export default function InvestorOnboardingPage() {
                             Focus Areas
                           </label>
                           <div className="flex flex-wrap gap-2 mb-3">
-                            {formData.investment.focusAreas.map((area) => (
+                            {formData.investment.focusAreas.map((area, index) => (
                               <span
-                                key={area}
+                                key={`${area}-${index}`}
                                 className="inline-flex items-center bg-blue-500/20 text-blue-300 text-sm px-3 py-1 rounded-full border border-blue-500/30"
                               >
                                 {area}
@@ -651,9 +644,9 @@ export default function InvestorOnboardingPage() {
                                 (area) =>
                                   !formData.investment.focusAreas.includes(area)
                               )
-                              .map((area) => (
+                              .map((area, index) => (
                                 <motion.div
-                                  key={area}
+                                  key={`${area}-${index}`}
                                   className="border border-slate-700 bg-slate-800/30 rounded-md p-2 cursor-pointer hover:bg-slate-800/70 hover:border-blue-500/30 transition-all duration-200"
                                   onClick={() =>
                                     handleArrayUpdate(
@@ -688,11 +681,10 @@ export default function InvestorOnboardingPage() {
                               )
                             }
                             placeholder="e.g. 50000"
-                            className={`bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${
-                              errors["investment.checkSize"]
-                                ? "border-red-500"
-                                : ""
-                            }`}
+                            className={`bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${errors["investment.checkSize"]
+                              ? "border-red-500"
+                              : ""
+                              }`}
                           />
                           {errors["investment.checkSize"] && (
                             <p className="mt-1 text-sm text-red-400">
@@ -761,9 +753,9 @@ export default function InvestorOnboardingPage() {
                           </label>
                           <div className="flex flex-wrap gap-2 mb-3">
                             {formData.portfolio.preferredVerticals.map(
-                              (vertical) => (
+                              (vertical, index) => (
                                 <span
-                                  key={vertical}
+                                  key={`${vertical}-${index}`}
                                   className="inline-flex items-center bg-indigo-500/20 text-indigo-300 text-sm px-3 py-1 rounded-full border border-indigo-500/30"
                                 >
                                   {vertical}
@@ -793,9 +785,9 @@ export default function InvestorOnboardingPage() {
                                     area
                                   )
                               )
-                              .map((area) => (
+                              .map((area, index) => (
                                 <motion.div
-                                  key={area}
+                                  key={`${area}-${index}`}
                                   className="border border-slate-700 bg-slate-800/30 rounded-md p-2 cursor-pointer hover:bg-slate-800/70 hover:border-indigo-500/30 transition-all duration-200"
                                   onClick={() =>
                                     handleArrayUpdate(
@@ -855,7 +847,7 @@ export default function InvestorOnboardingPage() {
               )}
 
               <Button
-                onClick={() => router.push("/investors")}
+                onClick={() => router.push("/dashboard/investor")}
                 className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-500 hover:opacity-90 text-white"
               >
                 {currentStep === steps.length - 1
